@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
-
-
-interface InscriptionFormInterface {
+interface LoginFormInterface {
   setUser: string,
-  setName: string,
-  setLastName: string,
   setPassword: string, 
-  setDataOk: boolean
+  setLogin: boolean
 }
 
-export function InscriptionForm({setName, setLastName, setUser, setPassword, setDataOk}: InscriptionFormInterface) {
- 
+export function LoginForm({ setUser, setPassword, setLogin}: LoginFormInterface ) {
 
   const [state, setState] = useState<object>({
     username: '',
-    name: '',
-    lastname: '',
     password: ''
   });
 
@@ -31,23 +24,13 @@ export function InscriptionForm({setName, setLastName, setUser, setPassword, set
     e.preventDefault();
     
     setUser(state.username);
-    setName(state.name);
-    setLastName(state.lastname);
     setPassword(state.password);
-    setDataOk(true)
+    setLogin(true)
   }
 
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Prenom :</label>
-        <input type="text" className="form-control" name='name' id="name" defaultValue={state.name} onChange={handleChange} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="lastname" className="form-label">Nom :</label>
-        <input type="text" className="form-control" name='lastname' id="lastname" defaultValue={state.lastname} onChange={handleChange} />
-      </div>
       <div className="mb-3">
         <label htmlFor="user" className="form-label">Username :</label>
         <input type="text" className="form-control" name='username' id="user" defaultValue={state.username} onChange={handleChange} />
